@@ -1,7 +1,6 @@
-class Solution(object):
-    
-    def sortColors(self, nums):
-
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+       
         start = 0
         mid = 0
         end = len(nums) - 1
