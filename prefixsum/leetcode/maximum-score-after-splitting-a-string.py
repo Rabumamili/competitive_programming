@@ -1,9 +1,8 @@
 class Solution:
     def maxScore(self, s: str) -> int:
-        maxsum= 0
-        for i in range(1, len(s)):
-            left = s[:i]
-            right = s[i:]
-            score = left.count("0")+ right.count('1')
-            maxsum = max(maxsum, score)
+        maxsum = 0
+        for i in range(len(s)-1):
+            sums = s[:i+1].count("0") + s[i+1:].count("1")
+            maxsum = max(sums, maxsum)
         return maxsum
+     
