@@ -6,7 +6,7 @@
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
  
-        # Base case: empty list or single node
+        #  empty list or single node
         if not head or not head.next:
             return head
 
@@ -14,6 +14,5 @@ class Solution:
         next_node = head.next
         head.next = self.swapPairs(next_node.next)
         next_node.next = head
-
-        # Set the head to the next node
+ 
         return next_node
