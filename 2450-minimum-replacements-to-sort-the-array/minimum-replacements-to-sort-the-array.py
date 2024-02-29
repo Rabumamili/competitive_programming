@@ -1,14 +1,14 @@
 class Solution:
     def minimumReplacement(self, nums: List[int]) -> int:
-        oper = 0
+        op = 0
         n = len(nums)
         for i in range(n-2, -1,-1):
-            partitions = math.ceil(nums[i] / nums[i+1])
-            oper += partitions - 1
-            remainder = nums[i] // partitions
+            part = ceil(nums[i] / nums[i+1])
+            op += part - 1
+            rem = nums[i] // part
 
-            if remainder == 0:
+            if rem == 0:
                 nums[i] = nums[i+1]
             else:
-                nums[i] = remainder
-        return oper
+                nums[i] = rem
+        return op
