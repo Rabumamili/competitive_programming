@@ -12,6 +12,5 @@ class Solution:
                     break
                 right -=1
 
-        
         return "".join(nums)
         
