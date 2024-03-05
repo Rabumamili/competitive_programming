@@ -4,7 +4,7 @@ class Solution:
         right = len(s) - 1
         
         while left < right and s[left] == s[right]:
-            char = s[left]
+            char = s[right]
             while left <= right and s[left] == char:
                 left += 1
             while right >= left and s[right] == char:
