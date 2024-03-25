@@ -12,7 +12,7 @@ class Solution:
                     i +=1
             else:
                 i +=1
-                    
+      
         ans = []  
         for i in range(n):
             if nums[i] != i+1:
