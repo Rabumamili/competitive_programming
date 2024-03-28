@@ -1,12 +1,17 @@
 class Solution:
-    def brokenCalc(self, startValue: int, target: int) -> int:
-        def helper(startValue, target):
-            if startValue >= target:
-                return startValue - target
-
-            if target %2 == 0:
-                return 1 + helper(startValue, target/2)
-            return 1 + helper(startValue, target+1)
+    def brokenCalc(self, start: int, target: int) -> int: 
+        if start >= target:
+            return start - target
+        count = 0
+        while target > start:
+            if target % 2:
+                target += 1
+                target //=2
+                count += 2
+            else:
+                count += 1
+                target //= 2
+        if start > target:
+            count += start - target
+        return count
         
-        return int((helper(startValue, target)))
-            
