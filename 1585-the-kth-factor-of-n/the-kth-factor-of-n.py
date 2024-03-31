@@ -1,15 +1,17 @@
 class Solution:
     def kthFactor(self, n: int, k: int) -> int:
-        factors = []
-
-        for i in range(1, int((n**0.5)+1)):
-            if n %i==0:
-                factors.append(i)
-                if n//i != i:
-                    factors.append(n//i)
-        factors.sort()
-        if len(factors)< k:
+        i = 1
+        count = 0
+        while i < n:
+            if n%i==0:
+                count +=1
+                if count==k:
+                    return i
+            i+=1
+        if count ==k-1:
+            return n
+        else:
             return -1
-        
-        return factors[k-1]
-        
+
+
+ 
