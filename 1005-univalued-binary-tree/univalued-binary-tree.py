@@ -6,10 +6,10 @@
 #         self.right = right
 class Solution:
     def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
-    
-        lists = []
+
         queue = deque([root])
         val = root.val
+        
         while queue:
             node = queue.popleft()
             if node.val != val:
