@@ -1,6 +1,8 @@
 class Solution:
     def tribonacci(self, n: int) -> int:
-        nums = [0, 1,1]
-        for i in range(3, 38):
-            nums.append((nums[i-1]+ nums[i-2]+nums[i-3]))
-        return nums[n]
+        if n < 3:
+            return 1 if n else 0
+        a, b, c = 0, 1, 1
+        for _ in range(n - 2):
+            a, b, c = b, c, a + b + c
+        return c
