@@ -2,7 +2,7 @@ class Solution:
     def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
         def dfs(board, i, j):
             if board[i][j] == 'M':
-                board[i][j] = 'X'  # If mine is clicked, game over
+                board[i][j] = 'X'   
                 return
             if board[i][j] != 'E':
                 return
