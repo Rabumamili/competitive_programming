@@ -1,8 +1,9 @@
 class Solution:
     def tribonacci(self, n: int) -> int:
-        if n < 3:
-            return 1 if n else 0
-        a, b, c = 0, 1, 1
-        for _ in range(n - 2):
-            a, b, c = b, c, a + b + c
-        return c
+        @cache
+        def dp(n):
+            if n < 3:
+                return 1 if n else 0
+            return dp(n-3) + dp(n-2) + dp(n-1)
+        return dp(n)
+         
