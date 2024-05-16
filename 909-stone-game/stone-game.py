@@ -7,9 +7,9 @@ class Solution:
             if i == j:
                 return piles[i]
             if (i, j) not  in memo:
-                memo[(i, j)] = max(piles[i] + dp(i+1, j), piles[j] + dp(i, j-1))
+                memo[(i, j)] = max(piles[i] - dp(i+1, j), piles[j] - dp(i, j-1))
             return memo[(i, j)]
         
-        return sum(piles) - 2*dp(0, n-1) < 0
+        return dp(0, n-1) > 0
         
              
