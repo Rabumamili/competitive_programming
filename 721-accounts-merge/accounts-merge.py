@@ -21,12 +21,11 @@ class Solution:
                     component.append(node)
                     stack.extend(graph[node])
             return component
-
-        # Step 3: Collect the results
-        merged_accounts = []
+ 
+        ans = []
         for email in email_to_name:
             if email not in seen:
                 component = dfs(email)
-                merged_accounts.append([email_to_name[email]] + sorted(component))
+                ans.append([email_to_name[email]] + sorted(component))
 
-        return merged_accounts
+        return ans
