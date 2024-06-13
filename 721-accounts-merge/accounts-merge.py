@@ -1,31 +1,40 @@
 class Solution:
-    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
-        email_to_name = {}
-        graph = defaultdict(set)
-        for acc in accounts:
-            name = acc[0]
-            first_email = acc[1]
-            for email in acc[1:]:
-                graph[first_email].add(email)
-                graph[email].add(first_email)
-                email_to_name[email] = name
-    
-        seen = set()
-        def dfs(email):
-            stack = [email]
-            component = []
-            while stack:
-                node = stack.pop()
-                if node not in seen:
-                    seen.add(node)
-                    component.append(node)
-                    stack.extend(graph[node])
-            return component
- 
-        ans = []
-        for email in email_to_name:
-            if email not in seen:
-                component = dfs(email)
-                ans.append([email_to_name[email]] + sorted(component))
+    def accountsMerge(self, accs: List[List[str]]) -> List[List[str]]:
+        def find(x):
+            if x == par[x]:
+                return x
+            par[x] = find(par[x])
+            return par[x]
 
-        return ans
+        def union(x, y):
+            y = find(y)
+            x = find(x)
+            if x == y:
+                return -1
+            if sz[x] >= sz[y]:
+                par[y] = par[x]
+            else:
+                par[x] = par[y]
+
+        par = {i: i for i in range(len(accs))}
+        sz = {i: 0 for i in range(len(accs))}
+        num = set(range(len(accs)))
+
+        for i in range(len(accs)):
+            for e in accs[i][1:]:
+                if e in par:
+                    union(i, e)
+                else:
+                    par[e] = find(i)
+
+        ans = defaultdict(list)
+        for k in par:
+            if k not in num:
+                ans[find(k)].append(k)
+
+        res = []
+        for i in ans:
+            tmp = [accs[i][0]] + sorted(ans[i])
+            res.append(tmp)
+
+        return res
