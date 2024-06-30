@@ -1,5 +1,4 @@
-from typing import List
-
+ 
 class UnionFind:
     def __init__(self, n):
         self.count = n                             # number of disjoint sets
